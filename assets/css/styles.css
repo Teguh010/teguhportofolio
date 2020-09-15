@@ -168,6 +168,7 @@ img{
   cursor: pointer;
 }
 
+
 /*Active menu*/
 .active::after{
   position: absolute;
@@ -218,6 +219,162 @@ img{
   bottom: 0;
   width: 295px;
 }
+/* button-toggle-new-start */
+.btn-toggle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  padding: 1px;
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
+  transform: translateZ(0);
+  transition: transform 0.1s ease-out;
+  margin-bottom: -30px;;
+}
+
+.btn-toggle:active {
+  transform: translateY(4px);
+}
+
+.btn-toggle:focus .line:after {
+  background-color: #3d5af1;
+}
+
+.line {
+  display: block;
+  width: 30px;
+   padding: 1.75px;
+}
+
+.line:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #482ff7;
+  border-radius: 2.50px;
+  transform: translateZ(0) rotate(0);
+  transition: background-color 0.2s ease-out;
+}
+
+.open .line:nth-child(1) {
+  animation: jump-1 0.9s forwards ease;
+}
+
+.open .line:nth-child(1):after {
+  animation: line-1 0.9s forwards ease-in-out;
+}
+
+.open .line:nth-child(2) {
+  animation: jump-2 0.9s forwards ease;
+}
+
+.open .line:nth-child(2):after {
+  animation: line-2 0.9s forwards ease-in-out;
+}
+
+.close .line:nth-child(1) {
+  animation: jump-1 0.9s reverse ease;
+}
+
+.close .line:nth-child(1):after {
+  animation: line-1 0.9s reverse ease-in-out;
+}
+
+.close .line:nth-child(2) {
+  animation: jump-2 0.9s reverse ease;
+}
+
+.close .line:nth-child(2):after {
+  animation: line-2 0.9s reverse ease-in-out;
+}
+
+.open .line:nth-child(3) {
+  animation: jump-3 0.9s forwards ease-out;
+  display: none;
+}
+
+.close .line:nth-child(3) {
+  animation: jump-3 1s forwards ease;
+  display: unset;
+}
+
+@keyframes line-1 {
+  10% {
+    transform: translateZ(0) rotate(0);
+  }
+
+  80% {
+    transform: translateZ(0) rotate(395deg);
+  }
+
+  90%,
+  100% {
+    transform: translateZ(0) rotate(405deg);
+  }
+}
+
+@keyframes line-2 {
+  10% {
+    transform: translateZ(0) rotate(0);
+  }
+
+  20% {
+    transform: translateZ(0) rotate(10deg);
+  }
+
+  90%,
+  100% {
+    transform: translateZ(0) rotate(-405deg);
+  }
+}
+
+@keyframes jump-1 {
+  10% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-90px);
+  }
+
+  90%,
+  100% {
+    transform: translateY(-7.5px);
+  }
+}
+
+@keyframes jump-2 {
+  10% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  85%,
+  100% {
+    transform: translateY(-22.5px);
+  }
+}
+
+@keyframes jump-3 {
+  10% {
+    transform: translateY(-100px) rotate(10deg);
+  }
+}
+
+@keyframes glow {
+  50% {
+    box-shadow: rgba(115, 96, 249, 0.4) 0 0 2px 2px;
+  }
+}
+/* button-toggle-new-end */
 
 /*BUTTONS*/
 .button{

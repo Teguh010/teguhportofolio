@@ -123,6 +123,32 @@ img{
 }
 
 /*===== NAV =====*/
+$toggle-size: 60px;
+$toggle-line-size: $toggle-size/8;
+$toggle-line-angle: 405deg;
+
+.btn-toggle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    padding: 12px;
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+    transform: tranlateZ(0);
+    transition: transform 0.1s ease-out;
+
+    &:active {
+        transform: translateY(4px);
+    }
+
+    &:focus .line:after {
+        background-color: #3d5af1;
+    }
+}
 .nav{
     height: var(--header-height);
     display: flex;

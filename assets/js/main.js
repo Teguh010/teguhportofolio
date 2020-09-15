@@ -9,7 +9,31 @@ const showMenu = (toggleId, navId) =>{
         })
     }
 }
+
+//toggle-button-start
+const btntgle = document.getElementById("menu-toggle");
+const lines = btntgle.querySelectorAll(".line");
+const cls = { open: "open", close: "close" };
+let btnClass = cls.open;
+
+btntgle.addEventListener("click", () => {
+    if (btntgle.classList.contains(cls.open)) {
+        btntgle.classList.remove(btnClass);
+        btnClass = cls.close;
+    } else if (btntgle.classList.contains(cls.close)) {
+        btntgle.classList.remove(btnClass);
+        btnClass = cls.open;
+    }
+
+    void btntgle.offsetWidth;
+    btntgle.classList.add(btnClass);
+});
+
+//toggle-button-end
+
+
 showMenu('nav-toggle','nav-menu')
+showMenu('menu-toggle', 'nav-menu')
 
 /*===== ACTIVE AND REMOVE MENU =====*/
 const navLink = document.querySelectorAll('.nav__link');   

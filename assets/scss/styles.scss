@@ -329,7 +329,7 @@ $toggle-line-angle: 405deg;
         z-index: var(--z-back);
     }
     &__html{
-        width: 95%;
+        width: 15%;
     }
     &__css{
         width: 95%;
@@ -339,6 +339,12 @@ $toggle-line-angle: 405deg;
     }
     &__node {
         width: 85%;
+    }
+    &__vue {
+        width: 95%;
+    }
+    &__react {
+        width: 75%;
     }
     &__ux{
         width: 85%;

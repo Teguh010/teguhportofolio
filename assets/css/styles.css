@@ -460,6 +460,12 @@ img{
 .skills__node {
   width: 20%;
 }
+.skills__react {
+  width: 75%;
+}
+.skills__vue {
+  width: 95%;
+}
 .skills__mongo {
   width: 20%;
 }

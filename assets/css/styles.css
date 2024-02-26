@@ -783,6 +783,10 @@ figure.effect-sarah:hover p {
 	letter-spacing: 1px;
 	font-size: 68.5%;
 }
+.view-more {
+  color: white;
+  font-size: 12px;;
+}
 
 /* Individual effects */
 

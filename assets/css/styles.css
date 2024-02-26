@@ -614,7 +614,7 @@ background-color: rgba(0, 0, 255, 0.5);
     width: 300px;
   }
   .work__container{
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2,1fr);
     column-gap: 2rem;
   }
@@ -660,6 +660,8 @@ background-color: rgba(0, 0, 255, 0.5);
 figure.effect-sarah {
 	background: #42b078;
   border-radius: 8px;
+    box-shadow: 0 4px 25px rgba(14,36,49,.15);
+
 }
 
 figure.effect-sarah img {

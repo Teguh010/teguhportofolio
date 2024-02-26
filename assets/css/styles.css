@@ -607,6 +607,13 @@ img{
     grid-template-rows: repeat(2,1fr);
     column-gap: 2rem;
   }
+  .grid2 {
+	
+  grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2,1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+}
    .personal__container{
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2,1fr);
@@ -704,14 +711,6 @@ figure.effect-sarah:hover p {
 	opacity: 1;
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
-}
-
-.grid2 {
-	
-  grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2,1fr);
-    column-gap: 2rem;
-    row-gap: 2rem;
 }
 
 /* Common style */

@@ -596,10 +596,26 @@ background-color: rgba(0, 0, 255, 0.5);
     flex-direction: row;
     align-self: flex-end;
   }
-  .home__social-icon{
+    .home__social-icon{
     margin-bottom: 0;
     margin-right: var(--mb-4);
   }
+  .home__social-icon-bottom{
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .home__social-icon-bottom{
+  width: max-content;
+  margin-bottom: 0px;
+  font-size: 1.5rem;
+  color: white;
+}
+.home__social-icon-bottom:hover{
+  color: var(--first-color);
+}
+
+
   .home__img{
     width: 457px;
     bottom: 15%;
@@ -703,8 +719,8 @@ figure.effect-sarah h2::after {
 	content: '';
 	-webkit-transition: -webkit-transform 0.35s;
 	transition: transform 0.35s;
-	-webkit-transform: translate3d(-100%,0,0);
-	transform: translate3d(-100%,0,0);
+	/* -webkit-transform: translate3d(-100%,0,0);
+	transform: translate3d(-100%,0,0); */
 }
 
 figure.effect-sarah:hover h2::after {
@@ -721,7 +737,23 @@ figure.effect-sarah p {
 	transform: translate3d(100%,0,0);
 }
 
+figure.effect-sarah i {
+	padding: 1em 0;
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(100%,0,0);
+	transform: translate3d(100%,0,0);
+}
+
+
 figure.effect-sarah:hover p {
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+figure.effect-sarah:hover i {
 	opacity: 1;
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);

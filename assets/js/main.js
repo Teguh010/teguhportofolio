@@ -1,3 +1,16 @@
+/*===== PAGE LOADER =====*/
+window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('hidden');
+            setTimeout(() => {
+                loader.remove();
+            }, 500);
+        }, 800);
+    }
+});
+
 /*===== MENU SHOW =====*/
 const showMenu = (toggleId, navId) => {
     const toggle = document.getElementById(toggleId),
@@ -75,32 +88,152 @@ const sr = ScrollReveal({
     origin: 'top',
     distance: '80px',
     duration: 2000,
-    reset: true
+    reset: false,
+    easing: 'ease-out',
+    scale: 1,
+    viewFactor: 0.2
 });
 
 /*SCROLL HOME*/
-sr.reveal('.home__title', {});
-sr.reveal('.button', { delay: 200 });
-sr.reveal('.home__img', { delay: 400 });
-sr.reveal('.home__social-icon', { interval: 200 });
+sr.reveal('.home__title', { delay: 200, origin: 'left' });
+sr.reveal('.button', { delay: 400, origin: 'bottom' });
+sr.reveal('.home__img', { delay: 600, origin: 'right' });
+sr.reveal('.home__social-icon', { interval: 100, origin: 'left' });
 
 /*SCROLL ABOUT*/
-sr.reveal('.about__img', {});
-sr.reveal('.about__subtitle', { delay: 400 });
-sr.reveal('.about__text', { delay: 400 });
+sr.reveal('.about__img', { delay: 200, origin: 'left' });
+sr.reveal('.about__subtitle', { delay: 400, origin: 'right' });
+sr.reveal('.about__text', { delay: 600, origin: 'right' });
 
 /*SCROLL SKILLS*/
-sr.reveal('.skills__subtitle', {});
-sr.reveal('.skills__text', {});
-sr.reveal('.skills__data', { interval: 200 });
-sr.reveal('.skills__img', { delay: 600 });
+sr.reveal('.skills__subtitle', { delay: 200 });
+sr.reveal('.skills__text', { delay: 300 });
+sr.reveal('.skills__data', { interval: 150, origin: 'left' });
+sr.reveal('.skills__img', { delay: 600, origin: 'right' });
 
 /*SCROLL WORK*/
-sr.reveal('.work__img', { interval: 200 });
-sr.reveal('.effect-sarah', { interval: 200 });
+sr.reveal('.work__img', { interval: 200, origin: 'bottom' });
+sr.reveal('.effect-sarah', { interval: 200, origin: 'bottom' });
 
 /*SCROLL CONTACT*/
-sr.reveal('.contact__input', { interval: 200 });
+sr.reveal('.contact__form', { delay: 200, origin: 'bottom' });
+sr.reveal('.contact__input', { interval: 100, origin: 'bottom' });
+
+/*===== SCROLL PROGRESS BAR =====*/
+const scrollProgress = document.createElement('div');
+scrollProgress.className = 'scroll-progress';
+document.body.appendChild(scrollProgress);
+
+window.addEventListener('scroll', () => {
+    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (window.scrollY / windowHeight) * 100;
+    scrollProgress.style.width = scrolled + '%';
+});
+
+/*===== HEADER SCROLL EFFECT =====*/
+const header = document.querySelector('.l-header');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+});
+
+/*===== TYPING ANIMATION FOR HOME TITLE =====*/
+const typingElement = document.querySelector('.home__title-color');
+if (typingElement) {
+    const text = typingElement.textContent;
+    typingElement.textContent = '';
+    typingElement.style.borderRight = '3px solid';
+    typingElement.style.animation = 'blink 1s infinite';
+    
+    let i = 0;
+    const typeWriter = () => {
+        if (i < text.length) {
+            typingElement.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
+        } else {
+            setTimeout(() => {
+                typingElement.style.borderRight = 'none';
+            }, 500);
+        }
+    };
+    
+    setTimeout(() => {
+        typeWriter();
+    }, 1000);
+}
+
+/* Add blink animation for cursor */
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes blink {
+        0%, 50% { border-color: transparent; }
+        51%, 100% { border-color: var(--first-color); }
+    }
+`;
+document.head.appendChild(style);
+
+/*===== SKILLS BAR ANIMATION ON SCROLL =====*/
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+};
+
+const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const skillBar = entry.target.querySelector('.skills__bar');
+            if (skillBar) {
+                const width = skillBar.style.width || getComputedStyle(skillBar).width;
+                skillBar.style.width = '0';
+                setTimeout(() => {
+                    skillBar.style.transition = 'width 1.5s ease-out';
+                    skillBar.style.width = width;
+                }, 100);
+            }
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.skills__data').forEach(skill => {
+    skillsObserver.observe(skill);
+});
+
+/*===== PARALLAX EFFECT FOR HOME IMAGE =====*/
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const homeImg = document.querySelector('.home__img');
+    if (homeImg && scrolled < window.innerHeight) {
+        homeImg.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+});
+
+/*===== SMOOTH SCROLL FOR ANCHOR LINKS =====*/
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
 
 
 

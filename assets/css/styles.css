@@ -196,10 +196,15 @@ img{
     top: var(--header-height);
     right: -100%;
     width: 80%;
-    height: 100%;
+    height: calc(100vh - var(--header-height));
     padding: 2rem;
-    background-color: var(--second-color);
+    background: linear-gradient(135deg, var(--second-color) 0%, #1a1a2e 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
     transition: .5s;
+    z-index: 999;
+    overflow-y: auto;
   }
 
     figure.effect-sarah figcaption {
@@ -217,9 +222,32 @@ background-color: rgba(0, 0, 255, 0.5);
 .nav__item{
   margin-bottom: var(--mb-4);
 }
+
+@media screen and (max-width: 768px) {
+  .nav__item {
+    margin-bottom: 1.5rem;
+  }
+  .nav__list {
+    padding-top: 1rem;
+  }
+}
 .nav__link{
   position: relative;
   color: #fff;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__link {
+    color: #fff;
+    opacity: 0.9;
+  }
+  .nav__link:hover {
+    color: #fff;
+    opacity: 1;
+  }
 }
 .nav__link:hover{
   position: relative;
@@ -249,14 +277,16 @@ background-color: rgba(0, 0, 255, 0.5);
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  padding: 1px;
+  padding: 8px;
   background-color: transparent;
   border-color: transparent;
   outline: none;
   transform: translateZ(0);
   transition: transform 0.1s ease-out;
-  margin-bottom: -30px;
-  ;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  align-self: center;
 }
 
 .btn-toggle:active {
@@ -298,6 +328,11 @@ background-color: rgba(0, 0, 255, 0.5);
 
 .open .line:nth-child(2):after {
   animation: line-2 0.9s forwards ease-in-out;
+}
+
+/* Adjust position when open to keep centered */
+.open.btn-toggle {
+  transform: translateY(7.5px);
 }
 
 .close .line:nth-child(1) {
@@ -367,7 +402,7 @@ background-color: rgba(0, 0, 255, 0.5);
 
   90%,
   100% {
-    transform: translateY(-7.5px);
+    transform: translateY(7.5px);
   }
 }
 
@@ -382,7 +417,7 @@ background-color: rgba(0, 0, 255, 0.5);
 
   85%,
   100% {
-    transform: translateY(-22.5px);
+    transform: translateY(-7.5px);
   }
 }
 

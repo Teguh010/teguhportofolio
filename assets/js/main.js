@@ -95,10 +95,52 @@ const sr = ScrollReveal({
 });
 
 /*SCROLL HOME*/
-sr.reveal('.home__title', { delay: 200, origin: 'left' });
+// Disable ScrollReveal for home__title and home__img to prevent blur issues
+// sr.reveal('.home__title', { delay: 200, origin: 'left' });
 sr.reveal('.button', { delay: 400, origin: 'bottom' });
-sr.reveal('.home__img', { delay: 600, origin: 'right' });
+// sr.reveal('.home__img', { delay: 600, origin: 'right' });
 sr.reveal('.home__social-icon', { interval: 100, origin: 'left' });
+
+/*===== FIX SCROLLREVEAL BLUR ISSUE =====*/
+// Remove inline styles from ScrollReveal that cause blur
+const fixScrollRevealBlur = () => {
+  const homeTitle = document.querySelector('.home__title');
+  const homeImg = document.querySelector('.home__img');
+  const homeImgImg = document.querySelector('.home__img img');
+  
+  if (homeTitle) {
+    homeTitle.style.opacity = '1';
+    homeTitle.style.visibility = 'visible';
+    homeTitle.style.transform = 'none';
+    homeTitle.style.webkitTransform = 'none';
+  }
+  
+  if (homeImg) {
+    homeImg.style.opacity = '1';
+    homeImg.style.visibility = 'visible';
+    homeImg.style.transform = 'none';
+    homeImg.style.webkitTransform = 'none';
+  }
+  
+  if (homeImgImg) {
+    homeImgImg.style.opacity = '1';
+    homeImgImg.style.visibility = 'visible';
+    homeImgImg.style.transform = 'none';
+    homeImgImg.style.webkitTransform = 'none';
+  }
+};
+
+// Run immediately and after a delay to catch ScrollReveal
+fixScrollRevealBlur();
+setTimeout(fixScrollRevealBlur, 100);
+setTimeout(fixScrollRevealBlur, 500);
+setTimeout(fixScrollRevealBlur, 1000);
+setTimeout(fixScrollRevealBlur, 2000);
+
+// Also run on scroll to catch any re-applied styles
+window.addEventListener('scroll', () => {
+  fixScrollRevealBlur();
+}, { passive: true });
 
 /*SCROLL ABOUT*/
 sr.reveal('.about__img', { delay: 200, origin: 'left' });

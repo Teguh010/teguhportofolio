@@ -519,11 +519,23 @@ background-color: rgba(0, 0, 255, 0.5);
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
   text-rendering: optimizeLegibility;
-  transform: none;
-  -webkit-transform: none;
+  transform: none !important;
+  -webkit-transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   backface-visibility: visible;
   -webkit-backface-visibility: visible;
   will-change: auto;
+}
+
+/* Override ScrollReveal inline styles */
+.home__title[style*="opacity"],
+.home__title[style*="transform"],
+.home__title[style*="matrix"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  -webkit-transform: none !important;
 }
 
 .home__title-name {
@@ -535,8 +547,10 @@ background-color: rgba(0, 0, 255, 0.5);
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
   text-rendering: optimizeLegibility;
-  transform: none;
-  -webkit-transform: none;
+  transform: none !important;
+  -webkit-transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   text-shadow: none;
   letter-spacing: 0.5px;
 }
@@ -550,8 +564,10 @@ background-color: rgba(0, 0, 255, 0.5);
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
   text-rendering: optimizeLegibility;
-  transform: none;
-  -webkit-transform: none;
+  transform: none !important;
+  -webkit-transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .typing-text {
@@ -746,11 +762,23 @@ background-color: rgba(0, 0, 255, 0.5);
   width: 295px;
   z-index: 1;
   animation: fadeInRight 1s ease-out, float 6s ease-in-out infinite;
-  transform: none;
-  -webkit-transform: none;
+  transform: none !important;
+  -webkit-transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   backface-visibility: visible;
   -webkit-backface-visibility: visible;
   will-change: auto;
+}
+
+/* Override ScrollReveal inline styles for image */
+.home__img[style*="opacity"],
+.home__img[style*="transform"],
+.home__img[style*="matrix"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  -webkit-transform: none !important;
 }
 
 .home__img-wrapper {
@@ -790,8 +818,10 @@ background-color: rgba(0, 0, 255, 0.5);
   position: relative;
   z-index: 1;
   image-rendering: auto;
-  transform: none;
-  -webkit-transform: none;
+  transform: none !important;
+  -webkit-transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   backface-visibility: visible;
   -webkit-backface-visibility: visible;
   will-change: auto;

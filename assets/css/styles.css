@@ -588,6 +588,25 @@ background-color: rgba(0, 0, 255, 0.5);
 }
 .skills__subtitle{
   margin-bottom: var(--mb-2);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-color);
+  position: relative;
+  padding-bottom: 0.5rem;
+  margin-top: 1.5rem;
+}
+.skills__subtitle:first-child {
+  margin-top: 0;
+}
+.skills__subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  border-radius: 2px;
 }
 .skills__text{
   margin-bottom: var(--mb-4);
@@ -663,7 +682,61 @@ background-color: rgba(0, 0, 255, 0.5);
   width: 95%;
 }
 .skills__mongo {
+  width: 70%;
+}
+.skills__mysql {
   width: 80%;
+}
+.skills__typescript {
+  width: 90%;
+}
+.skills__quasar {
+  width: 90%;
+}
+.skills__quasar-mobile {
+  width: 90%;
+}
+.skills__mui {
+  width: 90%;
+}
+.skills__redux {
+  width: 85%;
+}
+.skills__bootstrap {
+  width: 90%;
+}
+.skills__express {
+  width: 80%;
+}
+.skills__nestjs {
+  width: 75%;
+}
+.skills__android {
+  width: 85%;
+}
+.skills__ios {
+  width: 85%;
+}
+.skills__git {
+  width: 90%;
+}
+.skills__github {
+  width: 90%;
+}
+.skills__figma {
+  width: 85%;
+}
+.skills__jira {
+  width: 85%;
+}
+.skills__notion {
+  width: 85%;
+}
+.skills__trello {
+  width: 85%;
+}
+.skills__slack {
+  width: 90%;
 }
 .skills__ux{
   width: 85%;

@@ -481,6 +481,10 @@ background-color: rgba(0, 0, 255, 0.5);
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
 }
 
 /* Greeting Text */
@@ -509,15 +513,18 @@ background-color: rgba(0, 0, 255, 0.5);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  will-change: auto;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: geometricPrecision;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
 }
 
 .home__title-name {
+  color: var(--first-color);
   background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -525,10 +532,24 @@ background-color: rgba(0, 0, 255, 0.5);
   position: relative;
   display: inline-block;
   font-size: 1.2em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  will-change: auto;
+  font-weight: 700;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: geometricPrecision;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
+  isolation: isolate;
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+  .home__title-name {
+    color: var(--first-color);
+    background: none;
+    -webkit-text-fill-color: var(--first-color);
+  }
 }
 
 .home__title-role {
@@ -537,16 +558,20 @@ background-color: rgba(0, 0, 255, 0.5);
   min-height: 1.5em;
   display: flex;
   align-items: center;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: geometricPrecision;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .typing-text {
   color: var(--first-color);
   font-weight: 600;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .cursor {
@@ -556,8 +581,10 @@ background-color: rgba(0, 0, 255, 0.5);
   background: var(--first-color);
   margin-left: 4px;
   animation: blink 1s infinite;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Description */
@@ -725,14 +752,22 @@ background-color: rgba(0, 0, 255, 0.5);
   width: 295px;
   z-index: 1;
   animation: fadeInRight 1s ease-out, float 6s ease-in-out infinite;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
 }
 
 .home__img-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
+  will-change: auto;
 }
 
 .home__img-glow {
@@ -746,23 +781,28 @@ background-color: rgba(0, 0, 255, 0.5);
   border-radius: 50%;
   animation: pulse 3s ease-in-out infinite;
   z-index: -1;
-  will-change: opacity;
+  will-change: opacity, transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
 }
 
 .home__img img {
   width: 100%;
   height: auto;
+  display: block;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
   position: relative;
   z-index: 1;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
-  -webkit-font-smoothing: antialiased;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
   will-change: auto;
+  object-fit: contain;
 }
 
 /* Status Badge */

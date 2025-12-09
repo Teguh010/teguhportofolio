@@ -109,7 +109,10 @@ sr.reveal('.about__text', { delay: 600, origin: 'right' });
 sr.reveal('.skills__subtitle', { delay: 200 });
 sr.reveal('.skills__text', { delay: 300 });
 sr.reveal('.skills__data', { interval: 150, origin: 'left' });
-sr.reveal('.skills__img', { delay: 600, origin: 'right' });
+sr.reveal('.skills__visual', { delay: 400, origin: 'right' });
+sr.reveal('.skill-badge', { interval: 100, origin: 'bottom' });
+sr.reveal('.circle-card', { interval: 200, origin: 'bottom' });
+sr.reveal('.stat-card', { interval: 150, origin: 'bottom' });
 
 /*SCROLL WORK*/
 sr.reveal('.work__img', { interval: 200, origin: 'bottom' });
@@ -206,6 +209,35 @@ const skillsObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.skills__data').forEach(skill => {
     skillsObserver.observe(skill);
+});
+
+/*===== CIRCULAR PROGRESS ANIMATION =====*/
+const circleProgressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const circle = entry.target;
+            const percent = circle.getAttribute('data-percent');
+            const circleElement = circle.querySelector('.progress-ring__circle');
+            
+            if (circleElement) {
+                const radius = circleElement.r.baseVal.value;
+                const circumference = radius * 2 * Math.PI;
+                const offset = circumference - (percent / 100) * circumference;
+                
+                circleElement.style.strokeDasharray = `${circumference} ${circumference}`;
+                circleElement.style.strokeDashoffset = circumference;
+                
+                setTimeout(() => {
+                    circleElement.style.transition = 'stroke-dashoffset 2s ease-out';
+                    circleElement.style.strokeDashoffset = offset;
+                }, 200);
+            }
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.circle-progress').forEach(circle => {
+    circleProgressObserver.observe(circle);
 });
 
 /*===== PARALLAX EFFECT FOR HOME IMAGE =====*/

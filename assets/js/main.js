@@ -113,6 +113,8 @@ sr.reveal('.skills__visual', { delay: 400, origin: 'right' });
 sr.reveal('.skill-badge', { interval: 100, origin: 'bottom' });
 sr.reveal('.circle-card', { interval: 200, origin: 'bottom' });
 sr.reveal('.stat-card', { interval: 150, origin: 'bottom' });
+sr.reveal('.tag', { interval: 50, origin: 'bottom' });
+sr.reveal('.achievement-item', { interval: 150, origin: 'right' });
 
 /*SCROLL WORK*/
 sr.reveal('.work__img', { interval: 200, origin: 'bottom' });
@@ -150,29 +152,41 @@ window.addEventListener('scroll', () => {
 });
 
 /*===== TYPING ANIMATION FOR HOME TITLE =====*/
-const typingElement = document.querySelector('.home__title-color');
+const typingElement = document.querySelector('.typing-text');
 if (typingElement) {
-    const text = typingElement.textContent;
-    typingElement.textContent = '';
-    typingElement.style.borderRight = '3px solid';
-    typingElement.style.animation = 'blink 1s infinite';
+    const roles = ['Fullstack Developer', 'Frontend Developer', 'Mobile Developer'];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
     
-    let i = 0;
     const typeWriter = () => {
-        if (i < text.length) {
-            typingElement.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
+        const currentRole = roles[roleIndex];
+        
+        if (isDeleting) {
+            typingElement.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
         } else {
-            setTimeout(() => {
-                typingElement.style.borderRight = 'none';
-            }, 500);
+            typingElement.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
         }
+        
+        let typeSpeed = isDeleting ? 50 : 100;
+        
+        if (!isDeleting && charIndex === currentRole.length) {
+            typeSpeed = 2000; // Pause at end
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typeSpeed = 500; // Pause before starting new word
+        }
+        
+        setTimeout(typeWriter, typeSpeed);
     };
     
     setTimeout(() => {
         typeWriter();
-    }, 1000);
+    }, 1500);
 }
 
 /* Add blink animation for cursor */

@@ -105,16 +105,17 @@ img{
 .section-title{
   position: relative;
   font-size: var(--h2-font-size);
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--first-color);
   margin-top: var(--mb-2);
   margin-bottom: var(--mb-4);
   text-align: center;
   font-weight: 700;
   letter-spacing: 1px;
   animation: fadeInUp 0.8s ease-out;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+  text-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
 }
 .section-title::after{
   position: absolute;
@@ -525,31 +526,17 @@ background-color: rgba(0, 0, 255, 0.5);
 
 .home__title-name {
   color: var(--first-color);
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   position: relative;
   display: inline-block;
   font-size: 1.2em;
   font-weight: 700;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
-  text-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
-  backface-visibility: visible;
-  -webkit-backface-visibility: visible;
-  isolation: isolate;
-}
-
-/* Fallback for browsers that don't support background-clip */
-@supports not (-webkit-background-clip: text) {
-  .home__title-name {
-    color: var(--first-color);
-    background: none;
-    -webkit-text-fill-color: var(--first-color);
-  }
+  text-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+  letter-spacing: 0.5px;
 }
 
 .home__title-role {
@@ -630,13 +617,13 @@ background-color: rgba(0, 0, 255, 0.5);
 .quick-stat__number {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--first-color);
   line-height: 1;
   margin-bottom: 0.25rem;
   word-break: break-word;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
 }
 
 .quick-stat__label {
@@ -1363,10 +1350,10 @@ background-color: rgba(0, 0, 255, 0.5);
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--first-color);
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
 }
 
 .circle-progress__label {
@@ -1442,12 +1429,12 @@ background-color: rgba(0, 0, 255, 0.5);
 .stat-card__number {
   font-size: 1.75rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--first-color);
   margin: 0;
   line-height: 1;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
 }
 
 .stat-card__label {

@@ -522,20 +522,25 @@ background-color: rgba(0, 0, 255, 0.5);
 /* Quick Stats */
 .home__quick-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
   margin-bottom: var(--mb-4);
   animation: fadeInUp 1.4s ease-out;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .quick-stat {
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem 0.5rem;
   background: var(--card-bg);
   backdrop-filter: blur(10px);
-  border-radius: 15px;
+  border-radius: 12px;
   box-shadow: var(--shadow);
   transition: all 0.3s ease;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .quick-stat:hover {
@@ -544,7 +549,7 @@ background-color: rgba(0, 0, 255, 0.5);
 }
 
 .quick-stat__number {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
   -webkit-background-clip: text;
@@ -552,13 +557,16 @@ background-color: rgba(0, 0, 255, 0.5);
   background-clip: text;
   line-height: 1;
   margin-bottom: 0.25rem;
+  word-break: break-word;
 }
 
 .quick-stat__label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-color);
   opacity: 0.7;
   font-weight: 500;
+  word-break: break-word;
+  line-height: 1.2;
 }
 
 /* CTA Buttons */
@@ -566,6 +574,7 @@ background-color: rgba(0, 0, 255, 0.5);
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  padding-top: 10px;
   animation: fadeInUp 1.6s ease-out;
 }
 
@@ -766,38 +775,38 @@ background-color: rgba(0, 0, 255, 0.5);
 }
 
 .floating-tech-badge--1 {
-  top: 20%;
-  left: 10%;
+  top: 15%;
+  right: 15%;
   animation-delay: 0s;
 }
 
 .floating-tech-badge--2 {
-  top: 40%;
-  left: 5%;
+  top: 30%;
+  right: 8%;
   animation-delay: 1s;
 }
 
 .floating-tech-badge--3 {
-  top: 60%;
-  left: 8%;
+  top: 45%;
+  right: 12%;
   animation-delay: 2s;
 }
 
 .floating-tech-badge--4 {
-  top: 30%;
-  right: 15%;
+  top: 60%;
+  right: 6%;
   animation-delay: 1.5s;
 }
 
 .floating-tech-badge--5 {
-  top: 50%;
+  top: 75%;
   right: 10%;
   animation-delay: 2.5s;
 }
 
 .floating-tech-badge--6 {
-  top: 70%;
-  right: 12%;
+  top: 25%;
+  right: 20%;
   animation-delay: 3s;
 }
 
@@ -1695,6 +1704,37 @@ background-color: rgba(0, 0, 255, 0.5);
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media screen and (max-width: 767px) {
+  /* Quick Stats Mobile */
+  .home__quick-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    padding: 0;
+    margin-bottom: var(--mb-3);
+  }
+  .quick-stat {
+    padding: 0.6rem 0.4rem;
+    border-radius: 10px;
+  }
+  .quick-stat__number {
+    font-size: 1.25rem;
+  }
+  .quick-stat__label {
+    font-size: 0.65rem;
+  }
+  .home__description {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+  .home__cta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
   .skills__visual {
     min-height: auto;
     padding: 2rem 1rem;
@@ -1842,6 +1882,7 @@ background-color: rgba(0, 0, 255, 0.5);
   }
   .home__cta {
     flex-wrap: nowrap;
+    padding-top: 80px;
   }
   .home__social{
     padding-top: 0;
@@ -1979,7 +2020,7 @@ background-color: rgba(0, 0, 255, 0.5);
     max-width: 100%;
   }
   .home__img{
-    right: 10%;
+    right: 20%;
   }
   .home__data {
     padding-left: 0;
